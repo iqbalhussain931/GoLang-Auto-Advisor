@@ -122,13 +122,13 @@ func receiveAjax(w http.ResponseWriter, r *http.Request) {
 }
 
 type course struct {
-	name        string
-	credit_hour string
-	pre_req     []Prerequisites
+	Name        string `json:"name"`
+	Credit_hour string `json:"credit_hour"`
+	Pre_req     []Prerequisites
 }
 
 type Prerequisites struct {
-	Cources string `json:"cources"`
+	Cources []course
 }
 
 func getYears() []int {
@@ -219,43 +219,63 @@ func getCourcesData() []course {
 
 		singleCourse := course{}
 
-		course := strings.Split(each_ln, "|")
+		sigCourse := strings.Split(each_ln, "|")
 
-		if course[0] != "" {
-			singleCourse.name = course[0]
+		if sigCourse[0] != "" {
+			singleCourse.Name = sigCourse[0]
 		} else {
-			singleCourse.name = ""
+			singleCourse.Name = ""
 		}
 
-		if course[1] != "" {
-			singleCourse.credit_hour = course[1]
+		if sigCourse[1] != "" {
+			singleCourse.Credit_hour = sigCourse[1]
 		} else {
-			singleCourse.credit_hour = ""
+			singleCourse.Credit_hour = ""
 		}
 
-		if course[2] != "" {
+		if sigCourse[2] != "" {
 
 			var allPrereqs []Prerequisites
 
 			singlePrereq := Prerequisites{}
 
 			a := regexp.MustCompile(`\s`)
-			preReqs := a.Split(course[2], -1)
+			preReqs := a.Split(sigCourse[2], -1)
 
-			for i, preReq := range preReqs {
-				singlePrereq.Cources = preReq
+			for _, preReq := range preReqs {
 
-				if preReq == "Senior" {
-					singlePrereq.Cources = preReqs[i] + " " + preReqs[i+1]
-					allPrereqs = append(allPrereqs, singlePrereq)
-					break
+				// fmt.Println(1, preReq)
+
+				b := regexp.MustCompile(`,`)
+				preReqsAndCourses := b.Split(preReq, -1)
+
+				var allSinglePreReqCourse []course
+
+				singlePreReqCourse := course{}
+
+				for _, preReqAnd := range preReqsAndCourses {
+					singlePreReqCourse.Name = preReqAnd
+
+					allSinglePreReqCourse = append(allSinglePreReqCourse, singlePreReqCourse)
+
+					// fmt.Println(2, preReqAnd)
 				}
+
+				singlePrereq.Cources = allSinglePreReqCourse
+
+				// if preReq == "Senior" {
+				// 	singlePrereq.Cources = preReqs[i] + " " + preReqs[i+1]
+				// 	allPrereqs = append(allPrereqs, singlePrereq)
+				// 	break
+				// }
 
 				allPrereqs = append(allPrereqs, singlePrereq)
 			}
 
-			singleCourse.pre_req = allPrereqs
+			singleCourse.Pre_req = allPrereqs
 		}
+
+		fmt.Println(singleCourse)
 
 		responseData = append(responseData, singleCourse)
 

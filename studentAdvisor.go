@@ -164,9 +164,9 @@ func (h *studentAdvisor) onCourseChange(ctx app.Context, e app.Event) {
 	} else {
 		for _, element := range h.cources {
 
-			if element.name == h.selectedCourse {
-				h.selectedCreditHour = element.credit_hour
-				h.selectedPreReqs = element.pre_req
+			if element.Name == h.selectedCourse {
+				h.selectedCreditHour = element.Credit_hour
+				h.selectedPreReqs = element.Pre_req
 			}
 
 		}
@@ -179,7 +179,6 @@ func (h *studentAdvisor) onCourseChange(ctx app.Context, e app.Event) {
 
 func (h *studentAdvisor) onStudentNameInputChange(ctx app.Context, e app.Event) {
 	h.studentName = ctx.JSSrc().Get("value").String()
-
 	h.validateFields(app.Window())
 }
 
@@ -400,7 +399,7 @@ func (h *studentAdvisor) Render() app.UI {
 								app.Select().OnChange(h.onCourseChange).Body(
 									app.Option().Text("Select Course").Selected(true).Value("none"),
 									app.Range(h.cources).Slice(func(i int) app.UI {
-										return app.Option().Text(h.cources[i].name).Value(h.cources[i].name)
+										return app.Option().Text(h.cources[i].Name).Value(h.cources[i].Name)
 									}),
 								).Class("form-control").ID("courseDropdown"),
 							).Class("col-sm-8"),
@@ -423,14 +422,14 @@ func (h *studentAdvisor) Render() app.UI {
 									app.Input().Type("text").Disabled(true).Placeholder("None").Value("None").Class("form-control"),
 								).Else(
 									app.Range(h.selectedPreReqs).Slice(func(i int) app.UI {
-										if i != 0 {
-											return app.Div().Body(
+										return app.If(i != 0,
+											app.Div().Body(
 												app.Span().Text("OR"),
 												app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources).Class("form-control"),
-											).Class("singlePreReq")
-										} else {
-											return app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources).Class("form-control")
-										}
+											).Class("singlePreReq"),
+										).Else(
+											app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources).Class("form-control"),
+										)
 									}),
 								),
 							).Class("col-sm-7"),
@@ -501,7 +500,6 @@ func (h *studentAdvisor) Render() app.UI {
 						).Class("mb-3 row"),
 						app.Div().Body(
 							app.Div().Body(
-								// app.A().Target("_blank").Href("/save-file").Body(app.Text("Save File")).Class("w3-bar-item w3-button btn btn-success"),
 								app.Button().OnClick(h.onSaveFile).Type("button").Body(app.Text("Save File")).Class("w3-bar-item w3-button btn btn-success"),
 							).Class("col"),
 							app.Div().Body(
