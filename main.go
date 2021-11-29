@@ -1,11 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
 
 	"github.com/maxence-charriere/go-app/v9/pkg/app"
 )
@@ -33,6 +31,10 @@ func (a *autoAdvisor) onChange(ctx app.Context, e app.Event) {
 		return
 	} else {
 
+		fileName := file.Get("name").String()
+
+		var studentName = fileName[:len(fileName)-4]
+
 		openFileErrorBox.Get("classList").Call("add", "d-none")
 		openFileErrorBox.Set("innerHTML", "")
 
@@ -44,22 +46,21 @@ func (a *autoAdvisor) onChange(ctx app.Context, e app.Event) {
 
 			ctx.SetState("fileData", content.String())
 
-			scanner := bufio.NewScanner(strings.NewReader(content.String()))
-			for scanner.Scan() {
-				fmt.Println(scanner.Text())
-			}
+			ctx.SetState("studentName", studentName)
+
+			// scanner := bufio.NewScanner(strings.NewReader(content.String()))
+			// for scanner.Scan() {
+			// 	fmt.Println(scanner.Text())
+			// }
 
 			var previewCoursesList []previewCourses
 
 			ctx.SetState("fileData1", previewCoursesList)
 
-			// fmt.Println(content) // your file content handling
-
 			var name []previewCourses
 			ctx.GetState("fileData1", &name)
 
-			fmt.Println(1)
-			fmt.Println(name)
+			// fmt.Println(name)
 
 			// app.Window().Get("location").Call("replace", "/student-advisor")
 

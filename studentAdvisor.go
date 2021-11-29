@@ -28,19 +28,6 @@ type studentAdvisor struct {
 	CGPA               float64
 }
 
-// func (h *studentAdvisor) OnMount(ctx app.Context) {
-// 	fmt.Println("component Mounted")
-
-// 	h.cources = getCourcesData()
-
-// 	elem := app.Window().Get("document").Call("getElementById", "courseDropdown")
-
-// 	elem.Call("append", app.Raw("<option>Iqbal Huusain</option>"))
-
-// 	fmt.Println("Hello")
-// 	h.Update()
-// }
-
 type previewCourses struct {
 	Course          string `json:"courseName"`
 	Credit_hour     string `json:"creditHour"`
@@ -340,21 +327,6 @@ func (h *studentAdvisor) OnSubmitForm(ctx app.Context, e app.Event) {
 			h.previewCourses = append(h.previewCourses, course)
 		}
 
-		// Remove Selected class from preview row
-		// var selectedRow = app.Window().Get("document").Call("querySelector", ".single-preview.selected")
-		// fmt.Println(app.ValueOf(selectedRow))
-		// if app.ValueOf(selectedRow) != app.Undefined() {
-		// 	selectedRow.Get("classList").Call("remove", "selected")
-		// }
-
-		// temp := js.Global().Get()
-
-		// for i, j := range temp {
-
-		// }
-
-		// fmt.Println(temp[0])
-
 		h.calculateCGPA(ctx)
 
 		h.Update()
@@ -367,11 +339,22 @@ func (h *studentAdvisor) OnMount(ctx app.Context) {
 	h.semesters = getSemesters()
 	h.grades = getGrades()
 	h.isFormValid = false
-	var name string
-	ctx.GetState("fileData", &name)
+	var previewData string
+	ctx.GetState("fileData", &previewData)
 
-	fmt.Println(2)
-	fmt.Println(name)
+	if previewData != "" {
+		h.previewCourses = setPreviewCourcesData(previewData)
+		h.calculateCGPA(ctx)
+	}
+
+	var studentName string
+	ctx.GetState("studentName", &studentName)
+
+	if studentName != "" {
+		h.studentName = studentName
+	}
+
+	h.Update()
 }
 
 func (h *studentAdvisor) Render() app.UI {
@@ -405,7 +388,7 @@ func (h *studentAdvisor) Render() app.UI {
 								app.Text("Student Name"),
 							).Class("form-label col-form-label col-sm-4"),
 							app.Div().Body(
-								app.Input().Type("text").OnChange(h.onStudentNameInputChange).Placeholder("Enter Student Name").Class("form-control"),
+								app.Input().Type("text").Value(h.studentName).OnChange(h.onStudentNameInputChange).Placeholder("Enter Student Name").Class("form-control"),
 							).Class("col-sm-8"),
 							app.Div().Body().Class("errorBox d-none col-sm-8").ID("studentNameErrorBox"),
 						).Class("mb-3 row"),

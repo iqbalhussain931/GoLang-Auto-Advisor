@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -26,13 +27,9 @@ func (h *getCources) Render() app.UI {
 
 	return app.Select().Body(
 		app.Range(cources).Slice(func(i int) app.UI {
-			// fmt.Println(cources[i].name.(string))
-			// return app.Option().Text("asd")
 			return app.Option().Text(cources[i]).Value(cources[i])
 		}),
 	).Class("form-control").ID("courseDropdown")
-
-	// return app.Option().Text("Iqbal Hussain").Value("Hussain")
 
 }
 
@@ -81,7 +78,6 @@ func receiveAjax(w http.ResponseWriter, r *http.Request) {
 		for _, each_ln := range text {
 
 			singleCourse := make(map[string]interface{})
-			// fmt.Println(each_ln)
 
 			course := strings.Split(each_ln, "|")
 
@@ -102,8 +98,6 @@ func receiveAjax(w http.ResponseWriter, r *http.Request) {
 			} else {
 				singleCourse["pre_req"] = ""
 			}
-
-			// fmt.Println(singleCourse)
 
 			responseData = append(responseData, singleCourse)
 
@@ -180,8 +174,6 @@ func getCourcesData() []course {
 	// file, err := os.Open(courcesPath)
 
 	file, err := http.Get("https://raw.githubusercontent.com/iqbalhussain931/GoLang-Auto-Advisor/main/courses.txt")
-
-	// fmt.Println(resp.Body)
 
 	if err != nil {
 		// log.Fatalf("failed to open")
@@ -271,6 +263,99 @@ func getCourcesData() []course {
 			}
 
 			singleCourse.Pre_req = allPrereqs
+		}
+
+		responseData = append(responseData, singleCourse)
+
+	}
+
+	return responseData
+}
+
+func setPreviewCourcesData(content string) []previewCourses {
+	// os.Open() opens specific file in
+	// read-only mode and this return
+	// a pointer of type os.
+	// file, err := os.Open(courcesPath)
+
+	var text []string
+	scanner := bufio.NewScanner(strings.NewReader(content))
+	for scanner.Scan() {
+		text = append(text, scanner.Text())
+	}
+
+	var responseData []previewCourses
+
+	// and then a loop iterates through
+	// and prints each of the slice values.
+	for _, each_ln := range text {
+
+		singleCourse := previewCourses{}
+
+		sigCourse := strings.Split(each_ln, "|")
+
+		if sigCourse[0] != "" {
+			singleCourse.Course = sigCourse[0]
+		} else {
+			singleCourse.Course = ""
+		}
+
+		if sigCourse[1] != "" {
+			singleCourse.Credit_hour = sigCourse[1]
+		} else {
+			singleCourse.Credit_hour = ""
+		}
+
+		if sigCourse[2] != "" {
+
+			var allPrereqs []Prerequisites
+
+			singlePrereq := Prerequisites{}
+
+			a := regexp.MustCompile(`\s`)
+			preReqs := a.Split(sigCourse[2], -1)
+
+			for i, preReq := range preReqs {
+
+				b := regexp.MustCompile(`,`)
+				preReqsAndCourses := b.Split(preReq, -1)
+
+				var allSinglePreReqCourse []course
+
+				singlePreReqCourse := course{}
+
+				// Temporary condition need to revisit this logic.
+				if preReq == "Senior" {
+					singlePreReqCourse.Name = preReqs[i] + " " + preReqs[i+1]
+					allSinglePreReqCourse = append(allSinglePreReqCourse, singlePreReqCourse)
+					singlePrereq.Cources = allSinglePreReqCourse
+					allPrereqs = append(allPrereqs, singlePrereq)
+					break
+				} else {
+					for _, preReqAnd := range preReqsAndCourses {
+						singlePreReqCourse.Name = preReqAnd
+						allSinglePreReqCourse = append(allSinglePreReqCourse, singlePreReqCourse)
+					}
+				}
+
+				singlePrereq.Cources = allSinglePreReqCourse
+
+				allPrereqs = append(allPrereqs, singlePrereq)
+			}
+
+			singleCourse.Prerequisites = allPrereqs
+		}
+		if sigCourse[3] != "" {
+			a := regexp.MustCompile(`\s`)
+			sem := a.Split(sigCourse[3], -1)
+
+			singleCourse.Semester = sem[0]
+			intVar, _ := strconv.Atoi(sem[1])
+			singleCourse.Year = intVar
+			singleCourse.Semester_n_year = sigCourse[3]
+		}
+		if sigCourse[4] != "" {
+			singleCourse.Grade = sigCourse[4]
 		}
 
 		responseData = append(responseData, singleCourse)
