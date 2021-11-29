@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"net/url"
@@ -77,8 +76,6 @@ func (h *studentAdvisor) onSaveFile(ctx app.Context, e app.Event) {
 
 	if len(h.previewCourses) > 0 {
 		cources, _ := json.Marshal(h.previewCourses)
-
-		fmt.Println(h.previewCourses)
 
 		formData := url.Values{
 			"studentName": {h.studentName},

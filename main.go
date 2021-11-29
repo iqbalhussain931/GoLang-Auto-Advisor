@@ -53,7 +53,7 @@ func (a *autoAdvisor) onChange(ctx app.Context, e app.Event) {
 
 			ctx.SetState("fileData1", previewCoursesList)
 
-			fmt.Println(content) // your file content handling
+			// fmt.Println(content) // your file content handling
 
 			var name []previewCourses
 			ctx.GetState("fileData1", &name)

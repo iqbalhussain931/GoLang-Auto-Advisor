@@ -273,8 +273,6 @@ func getCourcesData() []course {
 			singleCourse.Pre_req = allPrereqs
 		}
 
-		fmt.Println(singleCourse)
-
 		responseData = append(responseData, singleCourse)
 
 	}

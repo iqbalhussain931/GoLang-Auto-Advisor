@@ -111,42 +111,60 @@ func (h *studentAdvisor) validateFields(app app.BrowserWindow) {
 		isValid = true
 	}
 
-	// if len(h.previewCourses) > 0 {
+	if len(h.previewCourses) > 0 {
 
-	// 	preReqNotSatisfied := true
-	// 	preReqNotSatisfiedCourse := ""
+		if len(h.selectedPreReqs) > 0 {
 
-	// 	for _, course := range h.previewCourses {
+			preReqNotSatisfied := true
 
-	// 		// fmt.Println(1, course.Course)
+			preReqNotSatisfiedCourse := ""
 
-	// 		for _, req := range h.selectedPreReqs {
+			for _, req := range h.selectedPreReqs {
 
-	// 			// fmt.Println(2, req.Cources)
+				for i, reqAnd := range req.Cources {
 
-	// 			if req.Cources == course.Course {
-	// 				preReqNotSatisfied = false
-	// 				break
-	// 			} else {
-	// 				preReqNotSatisfiedCourse = req.Cources
-	// 			}
-	// 		}
+					if i != 0 && preReqNotSatisfied {
+						break
+					} else {
+						for _, course := range h.previewCourses {
 
-	// 		if !preReqNotSatisfied {
-	// 			break
-	// 		}
+							if reqAnd.Name == course.Course {
+								preReqNotSatisfied = false
+								break
+							} else {
+								preReqNotSatisfied = true
+								preReqNotSatisfiedCourse = reqAnd.Name
+							}
 
-	// 	}
+						}
+					}
 
-	// 	if preReqNotSatisfied {
-	// 		courseErrorBox.Get("classList").Call("remove", "d-none")
-	// 		courseErrorBox.Set("innerHTML", "The prerequisites requirement is not meet. Please add "+preReqNotSatisfiedCourse+" first.")
-	// 		isValid = false
-	// 	} else {
-	// 		isValid = true
-	// 	}
+				}
 
-	// }
+				if !preReqNotSatisfied {
+					break
+				}
+
+			}
+
+			if preReqNotSatisfied {
+				courseErrorBox.Get("classList").Call("remove", "d-none")
+				courseErrorBox.Set("innerHTML", "The prerequisites requirement is not meet. Please add "+preReqNotSatisfiedCourse+" first.")
+				isValid = false
+			} else {
+				isValid = true
+			}
+		} else {
+			isValid = true
+		}
+
+	} else {
+		if len(h.selectedPreReqs) > 0 {
+			courseErrorBox.Get("classList").Call("remove", "d-none")
+			courseErrorBox.Set("innerHTML", "The prerequisites requirement is not meet.")
+			isValid = false
+		}
+	}
 
 	h.isFormValid = isValid
 }
