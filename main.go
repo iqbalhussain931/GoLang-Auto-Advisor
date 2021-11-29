@@ -113,7 +113,6 @@ func (a *autoAdvisor) Render() app.UI {
 				app.Form().Method("post").OnSubmit(a.openFile).Body(
 					app.Div().Body(
 						app.Input().Type("file").OnChange(a.onChange).ID("fileInput").Placeholder("Existing Student").Class("w3-bar-item w3-button"),
-						// app.Input().Type("submit").Class("w3-bar-item w3-button"),
 						app.A().Href("/student-advisor").Body(app.Text("Open File")).ID("fileInput2").Class("w3-bar-item w3-button"),
 						app.Div().Body().Class("errorBox d-none col-sm-12").ID("openFileErrorBox"),
 					).Class("w3-bar w3-border"),
@@ -144,8 +143,6 @@ func main() {
 	app.Route("/", &autoAdvisor{})
 
 	app.Route("/student-advisor", &studentAdvisor{})
-
-	app.Route("/existing-student", &existingStudent{})
 
 	http.HandleFunc("/get-cources", receiveAjax)
 
