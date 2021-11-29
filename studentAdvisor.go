@@ -423,16 +423,34 @@ func (h *studentAdvisor) Render() app.UI {
 								).Else(
 									app.Range(h.selectedPreReqs).Slice(func(i int) app.UI {
 										return app.If(i != 0,
+											app.Span().Text("OR").Class("or-span"),
 											app.Div().Body(
-												app.Span().Text("OR"),
-												app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources).Class("form-control"),
-											).Class("singlePreReq"),
+												app.Range(h.selectedPreReqs[i].Cources).Slice(func(j int) app.UI {
+													return app.If(
+														j != 0,
+														app.Span().Text("&").Class("col-1"),
+														app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources[j].Name).Class("col form-control"),
+													).Else(
+														app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources[j].Name).Class("col form-control"),
+													)
+												}),
+											).Class("singlePreReq row"),
 										).Else(
-											app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources).Class("form-control"),
+											app.Div().Body(
+												app.Range(h.selectedPreReqs[i].Cources).Slice(func(j int) app.UI {
+													return app.If(
+														j != 0,
+														app.Span().Text("&").Class("col-1"),
+														app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources[j].Name).Class("col form-control"),
+													).Else(
+														app.Input().Type("text").Disabled(true).Placeholder("None").Value(h.selectedPreReqs[i].Cources[j].Name).Class("col form-control"),
+													)
+												}),
+											).Class("singlePreReq row"),
 										)
 									}),
 								),
-							).Class("col-sm-7"),
+							).Class("col-sm-7 preReqsList"),
 						).Class("mb-3 row"),
 						app.Div().Body(
 							app.Div().Body(
@@ -563,20 +581,33 @@ func (h *studentAdvisor) Render() app.UI {
 												).Else(
 													app.Td().Body(
 														app.Range(h.previewCourses[i].Prerequisites).Slice(func(j int) app.UI {
-															if j != 0 {
-																return app.Div().Body(
+															return app.If(
+																j != 0,
+																app.Div().Body(
 																	app.Strong().Body(
 																		app.Text("OR"),
-																	),
-																	app.Span().Body(
-																		app.Text(h.previewCourses[i].Prerequisites[j].Cources),
 																	).Class("small-text"),
-																)
-															} else {
-																return app.Span().Body(
-																	app.Text(h.previewCourses[i].Prerequisites[j].Cources),
-																).Class("normal-text")
-															}
+																	app.Range(h.previewCourses[i].Prerequisites[j].Cources).Slice(func(k int) app.UI {
+																		return app.If(
+																			k != 0,
+																			app.Text(" & "+h.previewCourses[i].Prerequisites[j].Cources[k].Name),
+																		).Else(
+																			app.Text(h.previewCourses[i].Prerequisites[j].Cources[k].Name),
+																		)
+																	}),
+																),
+															).Else(
+																app.Span().Body(
+																	app.Range(h.previewCourses[i].Prerequisites[j].Cources).Slice(func(k int) app.UI {
+																		return app.If(
+																			k != 0,
+																			app.Text(" & "+h.previewCourses[i].Prerequisites[j].Cources[k].Name),
+																		).Else(
+																			app.Text(h.previewCourses[i].Prerequisites[j].Cources[k].Name),
+																		)
+																	}),
+																).Class("normal-text"),
+															)
 														}),
 													).Class("align-middle"),
 												),

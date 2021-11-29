@@ -22,30 +22,35 @@ func downloadFile(w http.ResponseWriter, r *http.Request) {
 		var fileName = "./" + r.Form.Get("studentName") + ".txt"
 		var content string
 
-		// for _, course := range courses {
-		// 	content += course.Course + "|" + course.Credit_hour + "|"
-		// 	if len(course.Prerequisites) > 0 {
-		// 		for i, pre_req := range course.Prerequisites {
-		// 			if i == 0 {
-		// 				if i == len(course.Prerequisites)-1 {
-		// 					content += pre_req.Cources + "|"
-		// 				} else {
-		// 					content += pre_req.Cources
-		// 				}
-		// 			} else {
-		// 				if i == len(course.Prerequisites)-1 {
-		// 					content += " " + pre_req.Cources + "|"
-		// 				} else {
-		// 					content += " " + pre_req.Cources
-		// 				}
-		// 			}
-		// 		}
-		// 	} else {
-		// 		content += "|"
-		// 	}
+		for _, course := range courses {
+			content += course.Course + "|" + course.Credit_hour + "|"
+			if len(course.Prerequisites) > 0 {
+				for i := range course.Prerequisites {
+					if i == len(course.Prerequisites)-1 {
+						for j, preq := range course.Prerequisites[i].Cources {
+							if j == len(course.Prerequisites[i].Cources)-1 {
+								content += preq.Name + "|"
+							} else {
+								content += preq.Name + ","
+							}
+						}
 
-		// 	content += course.Semester_n_year + "|" + course.Grade + "\n"
-		// }
+					} else {
+						for j, preq := range course.Prerequisites[i].Cources {
+							if j == len(course.Prerequisites[i].Cources)-1 {
+								content += preq.Name + " "
+							} else {
+								content += preq.Name + ","
+							}
+						}
+					}
+				}
+			} else {
+				content += "|"
+			}
+
+			content += course.Semester_n_year + "|" + course.Grade + "\n"
+		}
 
 		// If the file doesn't exist, create it, or append to the file
 		f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0644)

@@ -242,9 +242,7 @@ func getCourcesData() []course {
 			a := regexp.MustCompile(`\s`)
 			preReqs := a.Split(sigCourse[2], -1)
 
-			for _, preReq := range preReqs {
-
-				// fmt.Println(1, preReq)
+			for i, preReq := range preReqs {
 
 				b := regexp.MustCompile(`,`)
 				preReqsAndCourses := b.Split(preReq, -1)
@@ -253,21 +251,21 @@ func getCourcesData() []course {
 
 				singlePreReqCourse := course{}
 
-				for _, preReqAnd := range preReqsAndCourses {
-					singlePreReqCourse.Name = preReqAnd
-
+				// Temporary condition need to revisit this logic.
+				if preReq == "Senior" {
+					singlePreReqCourse.Name = preReqs[i] + " " + preReqs[i+1]
 					allSinglePreReqCourse = append(allSinglePreReqCourse, singlePreReqCourse)
-
-					// fmt.Println(2, preReqAnd)
+					singlePrereq.Cources = allSinglePreReqCourse
+					allPrereqs = append(allPrereqs, singlePrereq)
+					break
+				} else {
+					for _, preReqAnd := range preReqsAndCourses {
+						singlePreReqCourse.Name = preReqAnd
+						allSinglePreReqCourse = append(allSinglePreReqCourse, singlePreReqCourse)
+					}
 				}
 
 				singlePrereq.Cources = allSinglePreReqCourse
-
-				// if preReq == "Senior" {
-				// 	singlePrereq.Cources = preReqs[i] + " " + preReqs[i+1]
-				// 	allPrereqs = append(allPrereqs, singlePrereq)
-				// 	break
-				// }
 
 				allPrereqs = append(allPrereqs, singlePrereq)
 			}

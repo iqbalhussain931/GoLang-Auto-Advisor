@@ -21,7 +21,24 @@ header.w3-panel h1:nth-child(2){
 header {
     margin-bottom: 15px;
 }
-
+.preReqsList .singlePreReq.row{
+    margin-left: 0;
+}
+.preReqsList .col-1{
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.preReqsList .or-span{
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+}
 .member{
     background-color: aliceblue;
 }
