@@ -142,7 +142,7 @@ func main() {
 
 	app.RunWhenOnBrowser()
 
-	err := app.GenerateStaticWebsite("", &app.Handler{
+	err := app.GenerateStaticWebsite(".", &app.Handler{
 		Name:               "GoLang Auto Advisor",
 		Resources:          app.GitHubPages("GoLang-Auto-Advisor"),
 		Author:             "Muhammad Iqbal Hussain",

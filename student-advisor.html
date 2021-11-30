@@ -8,34 +8,34 @@
 <meta name="keywords" content>
 <meta name="theme-color" content="#2d2c2c">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
-<meta property="og:url" content="http://127.0.0.1:39809/student-advisor">
+<meta property="og:url" content="http://127.0.0.1:40271/student-advisor">
 <meta property="og:title" content="Go Auto Advisor">
 <meta property="og:description" content="An Auto Advisor developed in Go Language and go-app.">
 <meta property="og:type" content="website">
-<meta property="og:image" content>
+<meta content property="og:image">
 <title>
 Go Auto Advisor
 </title>
-<link type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png" rel="icon">
+<link rel="icon" type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="apple-touch-icon" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="manifest" href="/GoLang-Auto-Advisor/manifest.webmanifest">
-<link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/app.css">
-<script defer="true" src="/GoLang-Auto-Advisor/wasm_exec.js"></script>
+<link href="/GoLang-Auto-Advisor/app.css" type="text/css" rel="stylesheet">
+<script src="/GoLang-Auto-Advisor/wasm_exec.js" defer="true"></script>
 <script defer="true" src="/GoLang-Auto-Advisor/app.js"></script>
 <link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/web/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/web/css/bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/web/css/style.css">
+<link rel="stylesheet" href="/GoLang-Auto-Advisor/web/css/style.css" type="text/css">
 <script defer="true" src="https://kit.fontawesome.com/8ed9c3141e.js"></script>
 <script defer="true" src="/GoLang-Auto-Advisor/web/js/bootstrap.min.js"></script>
 <script defer="true" src="/GoLang-Auto-Advisor/web/js/script.js"></script>
 </head>
 <body>
 <div>
-<aside id="app-wasm-loader" class="goapp-app-info">
-<img class="goapp-logo goapp-spin" src="https://storage.googleapis.com/murlok-github/icon-192.png" id="app-wasm-loader-icon">
+<aside class="goapp-app-info" id="app-wasm-loader">
+<img id="app-wasm-loader-icon" class="goapp-logo goapp-spin" src="https://storage.googleapis.com/murlok-github/icon-192.png">
 <p id="app-wasm-loader-label" class="goapp-label">
 Loading
 </p>
@@ -72,7 +72,7 @@ Student Name
 <div class="col-sm-8">
 <input type="text" value placeholder="Enter Student Name" class="form-control">
 </div>
-<div class="errorBox d-none col-sm-8" id="studentNameErrorBox"></div>
+<div id="studentNameErrorBox" class="errorBox d-none col-sm-8"></div>
 </div>
 <div class="mb-3 row">
 <label class="form-label col-form-label col-sm-4">
@@ -92,7 +92,7 @@ Select Course
 Credit Hour
 </label>
 <div class="col-sm-8">
-<input disabled="true" placeholder="0" value class="form-control" type="text">
+<input placeholder="0" value class="form-control" type="text" disabled="true">
 </div>
 </div>
 <div class="mb-3 row">
@@ -100,7 +100,7 @@ Credit Hour
 Course Prerequisites
 </label>
 <div class="col-sm-7 preReqsList">
-<input value="None" class="form-control" type="text" disabled="true" placeholder="None">
+<input type="text" disabled="true" placeholder="None" value="None" class="form-control">
 </div>
 </div>
 <div class="mb-3 row">
@@ -150,7 +150,7 @@ Select Semester
 Expected Grade
 </label>
 <div class="col-sm-6">
-<select id="yearDropdown" class="form-control">
+<select class="form-control" id="yearDropdown">
 <option selected="true" value="none">
 Select Grade
 </option>
@@ -204,7 +204,7 @@ Save File
 <div class="errorBox d-none col-sm-8" id="saveFileErrorBox"></div>
 </div>
 <div class="col">
-<button class="w3-bar-item w3-button btn btn-primary" type="submit">
+<button type="submit" class="w3-bar-item w3-button btn btn-primary">
 Add Course
 </button>
 </div>
