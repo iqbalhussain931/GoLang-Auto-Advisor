@@ -98,7 +98,7 @@ func (a *autoAdvisor) Render() app.UI {
 				app.Div().Body(
 					app.A().Body(
 						app.Text("New Student"),
-					).Class("w3-bar-item w3-button").Href("/student-advisor"),
+					).Class("w3-bar-item w3-button").Href("/GoLang-Auto-Advisor/student-advisor"),
 				).Class("w3-bar w3-border"),
 			).Class("w3-box"),
 			app.Div().Body(
