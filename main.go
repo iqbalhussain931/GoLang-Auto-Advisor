@@ -142,9 +142,8 @@ func main() {
 
 	app.RunWhenOnBrowser()
 
-	err := app.GenerateStaticWebsite("", &app.Handler{
+	handleOptions := &app.Handler{
 		Name:               "GoLang Auto Advisor",
-		Resources:          app.GitHubPages("GoLang-Auto-Advisor"),
 		Author:             "Muhammad Iqbal Hussain",
 		BackgroundColor:    "",
 		CacheableResources: []string{},
@@ -175,11 +174,17 @@ func main() {
 		ThemeColor: "",
 		Title:      "Go Auto Advisor",
 		Version:    "1.0.0",
-	})
+	}
 
-	http.Handle("/", &app.Handler{})
+	err := app.GenerateStaticWebsite("", handleOptions)
+
+	http.Handle("/", handleOptions)
 
 	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)
 	}
 }

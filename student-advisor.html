@@ -8,7 +8,7 @@
 <meta name="keywords" content>
 <meta name="theme-color" content="#2d2c2c">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
-<meta property="og:url" content="http://127.0.0.1:38217/student-advisor">
+<meta property="og:url" content="http://127.0.0.1:36243/student-advisor">
 <meta property="og:title" content="Go Auto Advisor">
 <meta property="og:description" content="An Auto Advisor developed in Go Language and go-app.">
 <meta property="og:type" content="website">
@@ -18,19 +18,19 @@ Go Auto Advisor
 </title>
 <link rel="icon" type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="apple-touch-icon" href="https://storage.googleapis.com/murlok-github/icon-192.png">
-<link rel="manifest" href="/GoLang-Auto-Advisor/manifest.webmanifest">
-<link rel="stylesheet" href="/GoLang-Auto-Advisor/app.css" type="text/css">
-<script defer="true" src="/GoLang-Auto-Advisor/wasm_exec.js"></script>
-<script defer="true" src="/GoLang-Auto-Advisor/app.js"></script>
-<link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/web/css/bootstrap.min.css">
+<link rel="manifest" href="/manifest.webmanifest">
+<link type="text/css" rel="stylesheet" href="/app.css">
+<script defer="true" src="/wasm_exec.js"></script>
+<script src="/app.js" defer="true"></script>
+<link type="text/css" rel="stylesheet" href="/web/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="/GoLang-Auto-Advisor/web/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<link href="/GoLang-Auto-Advisor/web/css/style.css" type="text/css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/web/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="/web/css/style.css">
 <script defer="true" src="https://kit.fontawesome.com/8ed9c3141e.js"></script>
-<script defer="true" src="/GoLang-Auto-Advisor/web/js/bootstrap.min.js"></script>
-<script src="/GoLang-Auto-Advisor/web/js/script.js" defer="true"></script>
+<script defer="true" src="/web/js/bootstrap.min.js"></script>
+<script defer="true" src="/web/js/script.js"></script>
 </head>
 <body>
 <div>
@@ -80,7 +80,7 @@ Course
 </label>
 <div class="col-sm-8">
 <select class="form-control" id="courseDropdown">
-<option selected="true" value="none">
+<option value="none" selected="true">
 Select Course
 </option>
 </select>
@@ -92,7 +92,7 @@ Select Course
 Credit Hour
 </label>
 <div class="col-sm-8">
-<input type="text" disabled="true" placeholder="0" value class="form-control">
+<input placeholder="0" value class="form-control" type="text" disabled="true">
 </div>
 </div>
 <div class="mb-3 row">
@@ -100,7 +100,7 @@ Credit Hour
 Course Prerequisites
 </label>
 <div class="col-sm-7 preReqsList">
-<input class="form-control" type="text" disabled="true" placeholder="None" value="None">
+<input disabled="true" placeholder="None" value="None" class="form-control" type="text">
 </div>
 </div>
 <div class="mb-3 row">
@@ -150,7 +150,7 @@ Select Semester
 Expected Grade
 </label>
 <div class="col-sm-6">
-<select id="yearDropdown" class="form-control">
+<select class="form-control" id="yearDropdown">
 <option selected="true" value="none">
 Select Grade
 </option>
@@ -196,7 +196,7 @@ Select Grade
 </div>
 <div class="mb-3 row form-buttons">
 <div class="col">
-<button type="button" class="w3-bar-item w3-button btn btn-success">
+<button class="w3-bar-item w3-button btn btn-success" type="button">
 Save File
 </button>
 </div>
@@ -223,7 +223,7 @@ Preview Degree
 CGPA
 </label>
 <div class="col-sm-2">
-<input class="form-control" type="text" disabled="true" value="0.00">
+<input type="text" disabled="true" value="0.00" class="form-control">
 </div>
 </div>
 <div class="mb-3">
