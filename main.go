@@ -179,7 +179,7 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	err := app.GenerateStaticWebsite(".", &app.Handler{
+	err := app.GenerateStaticWebsite("", &app.Handler{
 		Name:        "GoLang Auto Advisor",
 		Description: "A Basic auto advisor build on golang and go-app.",
 		Resources:   app.GitHubPages("GoLang-Auto-Advisor"),

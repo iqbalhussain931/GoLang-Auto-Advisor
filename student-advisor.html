@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta content="text/html; charset=utf-8" httpequiv="Content-Type">
 <meta name="author" content>
-<meta content="A Basic auto advisor build on golang and go-app." name="description">
+<meta name="description" content="A Basic auto advisor build on golang and go-app.">
 <meta name="keywords" content>
 <meta name="theme-color" content="#2d2c2c">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
-<meta property="og:url" content="http://127.0.0.1:35935/student-advisor">
-<meta content property="og:title">
+<meta property="og:url" content="http://127.0.0.1:38989/student-advisor">
+<meta property="og:title" content>
 <meta property="og:description" content="A Basic auto advisor build on golang and go-app.">
 <meta property="og:type" content="website">
 <meta property="og:image" content>
@@ -19,9 +19,9 @@
 <link rel="icon" type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="apple-touch-icon" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="manifest" href="/GoLang-Auto-Advisor/manifest.webmanifest">
-<link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/app.css">
+<link rel="stylesheet" href="/GoLang-Auto-Advisor/app.css" type="text/css">
 <script defer="true" src="/GoLang-Auto-Advisor/wasm_exec.js"></script>
-<script defer="true" src="/GoLang-Auto-Advisor/app.js"></script>
+<script src="/GoLang-Auto-Advisor/app.js" defer="true"></script>
 </head>
 <body>
 <div>
@@ -61,7 +61,7 @@ Dr. Robert Lowe
 Student Name
 </label>
 <div class="col-sm-8">
-<input placeholder="Enter Student Name" class="form-control" type="text" value>
+<input type="text" value placeholder="Enter Student Name" class="form-control">
 </div>
 <div class="errorBox d-none col-sm-8" id="studentNameErrorBox"></div>
 </div>
@@ -83,7 +83,7 @@ Select Course
 Credit Hour
 </label>
 <div class="col-sm-8">
-<input class="form-control" type="text" disabled="true" placeholder="0" value>
+<input type="text" disabled="true" placeholder="0" value class="form-control">
 </div>
 </div>
 <div class="mb-3 row">
@@ -91,7 +91,7 @@ Credit Hour
 Course Prerequisites
 </label>
 <div class="col-sm-7 preReqsList">
-<input value="None" class="form-control" type="text" disabled="true" placeholder="None">
+<input type="text" disabled="true" placeholder="None" value="None" class="form-control">
 </div>
 </div>
 <div class="mb-3 row">
@@ -102,7 +102,7 @@ Year
 </label>
 <div class="col-sm-8">
 <select class="form-control" id="yearDropdown">
-<option value="0" selected="true">
+<option selected="true" value="0">
 Select Year
 </option>
 </select>
@@ -142,7 +142,7 @@ Expected Grade
 </label>
 <div class="col-sm-6">
 <select class="form-control" id="yearDropdown">
-<option value="none" selected="true">
+<option selected="true" value="none">
 Select Grade
 </option>
 <option value>
@@ -180,7 +180,7 @@ Select Grade
 </option>
 </select>
 </div>
-<div id="gradeErrorBox" class="errorBox d-none col-sm-8"></div>
+<div class="errorBox d-none col-sm-8" id="gradeErrorBox"></div>
 </div>
 </div>
 </div>
@@ -195,14 +195,14 @@ Save File
 <div class="errorBox d-none col-sm-8" id="saveFileErrorBox"></div>
 </div>
 <div class="col">
-<button class="w3-bar-item w3-button btn btn-primary" type="submit">
+<button type="submit" class="w3-bar-item w3-button btn btn-primary">
 Add Course
 </button>
 </div>
 </div>
 </form>
 </div>
-<div id="previewWrapper" class="col-7">
+<div class="col-7" id="previewWrapper">
 <div class="mb-3 row">
 <div class="col">
 <h3 class="card-title heading">
@@ -214,7 +214,7 @@ Preview Degree
 CGPA
 </label>
 <div class="col-sm-2">
-<input value="0.00" class="form-control" type="text" disabled="true">
+<input type="text" disabled="true" value="0.00" class="form-control">
 </div>
 </div>
 <div class="mb-3">

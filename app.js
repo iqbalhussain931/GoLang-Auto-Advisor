@@ -28,7 +28,7 @@ if ("serviceWorker" in navigator) {
 // -----------------------------------------------------------------------------
 // Env
 // -----------------------------------------------------------------------------
-const goappEnv = {"GOAPP_INTERNAL_URLS":"null","GOAPP_ROOT_PREFIX":"/GoLang-Auto-Advisor","GOAPP_STATIC_RESOURCES_URL":"/GoLang-Auto-Advisor","GOAPP_VERSION":"f68f443d9e7644c7974ef1b86a39796359586582"};
+const goappEnv = {"GOAPP_INTERNAL_URLS":"null","GOAPP_ROOT_PREFIX":"/GoLang-Auto-Advisor","GOAPP_STATIC_RESOURCES_URL":"/GoLang-Auto-Advisor","GOAPP_VERSION":"e2e41cf80c2d9f4d1c88848ab20faf8ed3ece705"};
 
 function goappGetenv(k) {
   return goappEnv[k];
