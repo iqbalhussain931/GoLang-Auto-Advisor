@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta httpequiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="author" content>
+<meta name="description" content="A Basic auto advisor build on golang and go-app.">
+<meta name="keywords" content>
+<meta content="#2d2c2c" name="theme-color">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
+<meta property="og:url" content="http://127.0.0.1:43243/student-advisor">
+<meta property="og:title" content>
+<meta property="og:description" content="A Basic auto advisor build on golang and go-app.">
+<meta property="og:type" content="website">
+<meta property="og:image" content>
+<title>
+
+</title>
+<link rel="icon" type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png">
+<link rel="apple-touch-icon" href="https://storage.googleapis.com/murlok-github/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link href="/app.css" type="text/css" rel="stylesheet">
+<script defer="true" src="/wasm_exec.js"></script>
+<script defer="true" src="/app.js"></script>
+</head>
+<body>
+<div>
+<aside id="app-wasm-loader" class="goapp-app-info">
+<img class="goapp-logo goapp-spin" src="https://storage.googleapis.com/murlok-github/icon-192.png" id="app-wasm-loader-icon">
+<p id="app-wasm-loader-label" class="goapp-label">
+Loading
+</p>
+</aside>
+<div id="app-pre-render">
+<div class="container">
+<header class="container-fluid w3-center w3-opacity">
+<div class="row">
+<div class="col">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title h5">
+SOUTHEAST MISSOURI STATE UNIVERSITY
+</h5>
+<h5 class="card-title h5">
+CS-609 - GoLang Auto Advisor
+</h5>
+<p class="card-text">
+Dr. Robert Lowe
+</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="main-wrapper container-fluid w3-opacity">
+<div class="row">
+<div class="col-5">
+<form method="post" class="form">
+<div class="mb-3 row">
+<label class="form-label col-form-label col-sm-4">
+Student Name
+</label>
+<div class="col-sm-8">
+<input class="form-control" type="text" value placeholder="Enter Student Name">
+</div>
+<div class="errorBox d-none col-sm-8" id="studentNameErrorBox"></div>
+</div>
+<div class="mb-3 row">
+<label class="form-label col-form-label col-sm-4">
+Course
+</label>
+<div class="col-sm-8">
+<select class="form-control" id="courseDropdown">
+<option selected="true" value="none">
+Select Course
+</option>
+</select>
+</div>
+<div id="courseErrorBox" class="errorBox d-none col-sm-8"></div>
+</div>
+<div class="mb-3 row">
+<label class="form-label col-form-label col-sm-4">
+Credit Hour
+</label>
+<div class="col-sm-8">
+<input type="text" disabled="true" placeholder="0" value class="form-control">
+</div>
+</div>
+<div class="mb-3 row">
+<label class="form-label col-form-label col-sm-5">
+Course Prerequisites
+</label>
+<div class="col-sm-7 preReqsList">
+<input type="text" disabled="true" placeholder="None" value="None" class="form-control">
+</div>
+</div>
+<div class="mb-3 row">
+<div class="col-5">
+<div class="row">
+<label class="form-label col-form-label col-sm-4">
+Year
+</label>
+<div class="col-sm-8">
+<select class="form-control" id="yearDropdown">
+<option selected="true" value="0">
+Select Year
+</option>
+</select>
+</div>
+<div class="errorBox d-none col-sm-8" id="yearErrorBox"></div>
+</div>
+</div>
+<div class="col-7">
+<div class="row">
+<label class="form-label col-form-label col-sm-4">
+Semester
+</label>
+<div class="col-sm-8">
+<select class="form-control" id="yearDropdown">
+<option selected="true" value="none">
+Select Semester
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+</select>
+</div>
+<div class="errorBox d-none col-sm-8" id="semesterErrorBox"></div>
+</div>
+</div>
+<div class="col-8">
+<div class="row">
+<div class="row" style="margin-top:15px;">
+<label class="form-label col-form-label col-sm-6">
+Expected Grade
+</label>
+<div class="col-sm-6">
+<select class="form-control" id="yearDropdown">
+<option selected="true" value="none">
+Select Grade
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+<option value>
+
+</option>
+</select>
+</div>
+<div class="errorBox d-none col-sm-8" id="gradeErrorBox"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-3 row form-buttons">
+<div class="col">
+<button type="button" class="w3-bar-item w3-button btn btn-success">
+Save File
+</button>
+</div>
+<div class="col">
+<div class="errorBox d-none col-sm-8" id="saveFileErrorBox"></div>
+</div>
+<div class="col">
+<button type="submit" class="w3-bar-item w3-button btn btn-primary">
+Add Course
+</button>
+</div>
+</div>
+</form>
+</div>
+<div class="col-7" id="previewWrapper">
+<div class="mb-3 row">
+<div class="col">
+<h3 class="card-title heading">
+Preview Degree
+</h3>
+</div>
+<div class="col"></div>
+<label class="form-label col-form-label col-sm-2">
+CGPA
+</label>
+<div class="col-sm-2">
+<input type="text" disabled="true" value="0.00" class="form-control">
+</div>
+</div>
+<div class="mb-3">
+<div class="previews">
+<table class="table">
+<thead>
+<tr>
+<th>
+Course
+</th>
+<th>
+Credit Hours
+</th>
+<th>
+Prerequisites
+</th>
+<th>
+Grade
+</th>
+<th>
+Planned Semester
+</th>
+<th>
+Actions
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="no-preview">
+No Course Added
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

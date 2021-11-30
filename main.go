@@ -179,6 +179,15 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
+	err := app.GenerateStaticWebsite(".", &app.Handler{
+		Name:        "GoLang Auto Advisor",
+		Description: "A Basic auto advisor build on golang and go-app.",
+	})
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)
 	}
