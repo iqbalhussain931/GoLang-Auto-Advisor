@@ -6,17 +6,17 @@
 <meta name="author" content>
 <meta name="description" content="A Basic auto advisor build on golang and go-app.">
 <meta name="keywords" content>
-<meta content="#2d2c2c" name="theme-color">
+<meta name="theme-color" content="#2d2c2c">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
-<meta property="og:url" content="http://127.0.0.1:43243/student-advisor">
+<meta property="og:url" content="http://127.0.0.1:42759/student-advisor">
 <meta property="og:title" content>
 <meta property="og:description" content="A Basic auto advisor build on golang and go-app.">
-<meta property="og:type" content="website">
+<meta content="website" property="og:type">
 <meta property="og:image" content>
 <title>
 
 </title>
-<link rel="icon" type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png">
+<link href="https://storage.googleapis.com/murlok-github/icon-192.png" rel="icon" type="image/png">
 <link rel="apple-touch-icon" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link href="/app.css" type="text/css" rel="stylesheet">
@@ -26,7 +26,7 @@
 <body>
 <div>
 <aside id="app-wasm-loader" class="goapp-app-info">
-<img class="goapp-logo goapp-spin" src="https://storage.googleapis.com/murlok-github/icon-192.png" id="app-wasm-loader-icon">
+<img id="app-wasm-loader-icon" class="goapp-logo goapp-spin" src="https://storage.googleapis.com/murlok-github/icon-192.png">
 <p id="app-wasm-loader-label" class="goapp-label">
 Loading
 </p>
@@ -61,7 +61,7 @@ Dr. Robert Lowe
 Student Name
 </label>
 <div class="col-sm-8">
-<input class="form-control" type="text" value placeholder="Enter Student Name">
+<input type="text" value placeholder="Enter Student Name" class="form-control">
 </div>
 <div class="errorBox d-none col-sm-8" id="studentNameErrorBox"></div>
 </div>
@@ -76,14 +76,14 @@ Select Course
 </option>
 </select>
 </div>
-<div id="courseErrorBox" class="errorBox d-none col-sm-8"></div>
+<div class="errorBox d-none col-sm-8" id="courseErrorBox"></div>
 </div>
 <div class="mb-3 row">
 <label class="form-label col-form-label col-sm-4">
 Credit Hour
 </label>
 <div class="col-sm-8">
-<input type="text" disabled="true" placeholder="0" value class="form-control">
+<input class="form-control" type="text" disabled="true" placeholder="0" value>
 </div>
 </div>
 <div class="mb-3 row">
@@ -101,7 +101,7 @@ Course Prerequisites
 Year
 </label>
 <div class="col-sm-8">
-<select class="form-control" id="yearDropdown">
+<select id="yearDropdown" class="form-control">
 <option selected="true" value="0">
 Select Year
 </option>
@@ -116,7 +116,7 @@ Select Year
 Semester
 </label>
 <div class="col-sm-8">
-<select class="form-control" id="yearDropdown">
+<select id="yearDropdown" class="form-control">
 <option selected="true" value="none">
 Select Semester
 </option>
@@ -141,7 +141,7 @@ Select Semester
 Expected Grade
 </label>
 <div class="col-sm-6">
-<select class="form-control" id="yearDropdown">
+<select id="yearDropdown" class="form-control">
 <option selected="true" value="none">
 Select Grade
 </option>
@@ -214,7 +214,7 @@ Preview Degree
 CGPA
 </label>
 <div class="col-sm-2">
-<input type="text" disabled="true" value="0.00" class="form-control">
+<input class="form-control" type="text" disabled="true" value="0.00">
 </div>
 </div>
 <div class="mb-3">
