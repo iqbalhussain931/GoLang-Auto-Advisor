@@ -142,8 +142,6 @@ func main() {
 
 	app.RunWhenOnBrowser()
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-
 	err := app.GenerateStaticWebsite("", &app.Handler{
 		Name:               "GoLang Auto Advisor",
 		Resources:          app.GitHubPages("GoLang-Auto-Advisor"),
@@ -162,17 +160,17 @@ func main() {
 		RawHeaders:         []string{},
 		Scripts: []string{
 			"https://kit.fontawesome.com/8ed9c3141e.js",
-			"static/js/bootstrap.min.js",
-			"static/js/script.js",
+			"web/js/bootstrap.min.js",
+			"web/js/script.js",
 		},
 		ShortName: "",
 		Styles: []string{
-			"static/css/bootstrap.min.css",
+			"web/css/bootstrap.min.css",
 			"https://www.w3schools.com/w3css/4/w3.css",
 			"https://fonts.googleapis.com/css?family=Raleway",
 			"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-			"static/css/bootstrap.min.css",
-			"static/css/style.css",
+			"web/css/bootstrap.min.css",
+			"web/css/style.css",
 		},
 		ThemeColor: "",
 		Title:      "Go Auto Advisor",

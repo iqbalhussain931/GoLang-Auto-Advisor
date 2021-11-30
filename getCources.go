@@ -19,7 +19,7 @@ type getCources struct {
 	app.Compo
 }
 
-var courcesPath = "./static/data/courses.txt"
+var courcesPath = "./web/data/courses.txt"
 
 func (h *getCources) Render() app.UI {
 
