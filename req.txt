@@ -1,3 +1,0 @@
-go get github.com/parnurzeal/gorequest
-
-go install github.com/agnivade/wasmbrowsertest@latest

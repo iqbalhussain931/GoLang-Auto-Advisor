@@ -48,21 +48,12 @@ func (a *autoAdvisor) onChange(ctx app.Context, e app.Event) {
 
 			ctx.SetState("studentName", studentName)
 
-			// scanner := bufio.NewScanner(strings.NewReader(content.String()))
-			// for scanner.Scan() {
-			// 	fmt.Println(scanner.Text())
-			// }
-
 			var previewCoursesList []previewCourses
 
 			ctx.SetState("fileData1", previewCoursesList)
 
 			var name []previewCourses
 			ctx.GetState("fileData1", &name)
-
-			// fmt.Println(name)
-
-			// app.Window().Get("location").Call("replace", "/student-advisor")
 
 			close()
 			return nil
@@ -127,7 +118,7 @@ func (a *autoAdvisor) Render() app.UI {
 					app.Div().Body(
 						app.Ul().Body(
 							app.Li().Text("Muhammad Iqbal Hussain").Class("member"),
-							app.Li().Text("Tony").Class("member"),
+							app.Li().Text("Anthony Mimfa").Class("member"),
 							app.Li().Text("Jiahao Deng").Class("member"),
 							app.Li().Text("Jing Ma").Class("member"),
 							app.Li().Text("Qizheng Ma").Class("member"),
