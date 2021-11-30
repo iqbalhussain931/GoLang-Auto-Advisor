@@ -182,6 +182,7 @@ func main() {
 	err := app.GenerateStaticWebsite(".", &app.Handler{
 		Name:        "GoLang Auto Advisor",
 		Description: "A Basic auto advisor build on golang and go-app.",
+		Resources:   app.GitHubPages("GoLang-Auto-Advisor"),
 	})
 
 	if err != nil {

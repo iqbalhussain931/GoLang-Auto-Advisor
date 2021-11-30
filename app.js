@@ -5,7 +5,7 @@ var goappOnUpdate = function () { };
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/app-worker.js")
+    .register("/GoLang-Auto-Advisor/app-worker.js")
     .then(reg => {
       console.log("registering app service worker");
 
@@ -28,7 +28,7 @@ if ("serviceWorker" in navigator) {
 // -----------------------------------------------------------------------------
 // Env
 // -----------------------------------------------------------------------------
-const goappEnv = {"GOAPP_INTERNAL_URLS":"null","GOAPP_ROOT_PREFIX":"","GOAPP_STATIC_RESOURCES_URL":"","GOAPP_VERSION":"43c615279967953715839efe6086a317ac16169e"};
+const goappEnv = {"GOAPP_INTERNAL_URLS":"null","GOAPP_ROOT_PREFIX":"/GoLang-Auto-Advisor","GOAPP_STATIC_RESOURCES_URL":"/GoLang-Auto-Advisor","GOAPP_VERSION":"f68f443d9e7644c7974ef1b86a39796359586582"};
 
 function goappGetenv(k) {
   return goappEnv[k];
@@ -105,7 +105,7 @@ if (!/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)) {
 
   const go = new Go();
 
-  WebAssembly.instantiateStreaming(fetch("/web/app.wasm"), go.importObject)
+  WebAssembly.instantiateStreaming(fetch("/GoLang-Auto-Advisor/web/app.wasm"), go.importObject)
     .then(result => {
       const loaderIcon = document.getElementById("app-wasm-loader-icon");
       loaderIcon.className = "goapp-logo";

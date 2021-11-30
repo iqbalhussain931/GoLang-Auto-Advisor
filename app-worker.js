@@ -1,18 +1,18 @@
-const cacheName = "app-" + "43c615279967953715839efe6086a317ac16169e";
+const cacheName = "app-" + "f68f443d9e7644c7974ef1b86a39796359586582";
 
 self.addEventListener("install", event => {
-  console.log("installing app worker 43c615279967953715839efe6086a317ac16169e");
+  console.log("installing app worker f68f443d9e7644c7974ef1b86a39796359586582");
 
   event.waitUntil(
     caches.open(cacheName).
       then(cache => {
         return cache.addAll([
-          "/",
-          "/app.css",
-          "/app.js",
-          "/manifest.webmanifest",
-          "/wasm_exec.js",
-          "/web/app.wasm",
+          "/GoLang-Auto-Advisor",
+          "/GoLang-Auto-Advisor/app.css",
+          "/GoLang-Auto-Advisor/app.js",
+          "/GoLang-Auto-Advisor/manifest.webmanifest",
+          "/GoLang-Auto-Advisor/wasm_exec.js",
+          "/GoLang-Auto-Advisor/web/app.wasm",
           "https://storage.googleapis.com/murlok-github/icon-192.png",
           "https://storage.googleapis.com/murlok-github/icon-512.png",
           
@@ -36,7 +36,7 @@ self.addEventListener("activate", event => {
       );
     })
   );
-  console.log("app worker 43c615279967953715839efe6086a317ac16169e is activated");
+  console.log("app worker f68f443d9e7644c7974ef1b86a39796359586582 is activated");
 });
 
 self.addEventListener("fetch", event => {
