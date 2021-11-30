@@ -1,7 +1,7 @@
 {
   "short_name": "GoLang Auto Advisor",
   "name": "GoLang Auto Advisor",
-  "description": "A Basic auto advisor build on golang and go-app.",
+  "description": "An Auto Advisor developed in Go Language and go-app.",
   "icons": [
     {
       "src": "https://storage.googleapis.com/murlok-github/icon-192.png",

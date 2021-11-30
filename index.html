@@ -3,29 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta httpequiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="author" content>
-<meta name="description" content="A Basic auto advisor build on golang and go-app.">
+<meta name="author" content="Muhammad Iqbal Hussain">
+<meta name="description" content="An Auto Advisor developed in Go Language and go-app.">
 <meta name="keywords" content>
 <meta name="theme-color" content="#2d2c2c">
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" name="viewport">
-<meta property="og:url" content="http://127.0.0.1:38989/">
-<meta property="og:title" content>
-<meta content="A Basic auto advisor build on golang and go-app." property="og:description">
-<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
+<meta property="og:url" content="http://127.0.0.1:46355/">
+<meta property="og:title" content="Go Auto Advisor">
+<meta property="og:description" content="An Auto Advisor developed in Go Language and go-app.">
+<meta content="website" property="og:type">
 <meta property="og:image" content>
 <title>
-
+Go Auto Advisor
 </title>
 <link rel="icon" type="image/png" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="apple-touch-icon" href="https://storage.googleapis.com/murlok-github/icon-192.png">
 <link rel="manifest" href="/GoLang-Auto-Advisor/manifest.webmanifest">
-<link href="/GoLang-Auto-Advisor/app.css" type="text/css" rel="stylesheet">
-<script defer="true" src="/GoLang-Auto-Advisor/wasm_exec.js"></script>
+<link type="text/css" rel="stylesheet" href="/GoLang-Auto-Advisor/app.css">
+<script src="/GoLang-Auto-Advisor/wasm_exec.js" defer="true"></script>
 <script defer="true" src="/GoLang-Auto-Advisor/app.js"></script>
+<link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css">
+<link href="https://www.w3schools.com/w3css/4/w3.css" type="text/css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="static/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="static/css/style.css" type="text/css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/8ed9c3141e.js" defer="true"></script>
+<script defer="true" src="static/js/bootstrap.min.js"></script>
+<script defer="true" src="static/js/script.js"></script>
 </head>
 <body>
 <div>
-<aside id="app-wasm-loader" class="goapp-app-info">
+<aside class="goapp-app-info" id="app-wasm-loader">
 <img id="app-wasm-loader-icon" class="goapp-logo goapp-spin" src="https://storage.googleapis.com/murlok-github/icon-192.png">
 <p id="app-wasm-loader-label" class="goapp-label">
 Loading
@@ -42,7 +51,7 @@ Auto Advisior
 </h1>
 <div class="w3-box">
 <div class="w3-bar w3-border">
-<a href="/student-advisor" class="w3-bar-item w3-button">
+<a class="w3-bar-item w3-button" href="/student-advisor">
 New Student
 </a>
 </div>
@@ -50,7 +59,7 @@ New Student
 <div class="w3-box">
 <form method="post" class="form">
 <div class="w3-bar w3-border">
-<input type="file" id="fileInput" placeholder="Existing Student" class="w3-bar-item w3-button">
+<input id="fileInput" placeholder="Existing Student" class="w3-bar-item w3-button" type="file">
 <a href="/student-advisor" id="fileInput2" class="w3-bar-item w3-button">
 Open File
 </a>

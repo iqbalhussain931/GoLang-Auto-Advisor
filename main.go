@@ -142,18 +142,21 @@ func main() {
 
 	app.RunWhenOnBrowser()
 
-	http.Handle("/", &app.Handler{
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	err := app.GenerateStaticWebsite("", &app.Handler{
+		Name:               "GoLang Auto Advisor",
+		Resources:          app.GitHubPages("GoLang-Auto-Advisor"),
 		Author:             "Muhammad Iqbal Hussain",
 		BackgroundColor:    "",
 		CacheableResources: []string{},
-		Description:        "An Auto Advisor in Go Language",
+		Description:        "An Auto Advisor developed in Go Language and go-app.",
 		Env:                map[string]string{},
 		Icon:               app.Icon{},
 		Image:              "",
 		InternalURLs:       []string{},
 		Keywords:           []string{},
 		LoadingLabel:       "",
-		Name:               "Go Auto Advisor",
 		PreRenderCache:     nil,
 		ProxyResources:     []app.ProxyResource{},
 		RawHeaders:         []string{},
@@ -163,7 +166,6 @@ func main() {
 			"static/js/script.js",
 		},
 		ShortName: "",
-		Resources: nil,
 		Styles: []string{
 			"static/css/bootstrap.min.css",
 			"https://www.w3schools.com/w3css/4/w3.css",
@@ -177,13 +179,7 @@ func main() {
 		Version:    "1.0.0",
 	})
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-
-	err := app.GenerateStaticWebsite("", &app.Handler{
-		Name:        "GoLang Auto Advisor",
-		Description: "A Basic auto advisor build on golang and go-app.",
-		Resources:   app.GitHubPages("GoLang-Auto-Advisor"),
-	})
+	http.Handle("/", &app.Handler{})
 
 	if err != nil {
 		log.Fatal(err)
