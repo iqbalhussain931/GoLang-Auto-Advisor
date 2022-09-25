@@ -118,10 +118,7 @@ func (a *autoAdvisor) Render() app.UI {
 					app.Div().Body(
 						app.Ul().Body(
 							app.Li().Text("Muhammad Iqbal Hussain").Class("member"),
-							app.Li().Text("Anthony Mimfa").Class("member"),
 							app.Li().Text("Jiahao Deng").Class("member"),
-							app.Li().Text("Jing Ma").Class("member"),
-							app.Li().Text("Qizheng Ma").Class("member"),
 						).Class("list"),
 					).Class("group-members-main"),
 				).Class("group-members-wrapper"),
